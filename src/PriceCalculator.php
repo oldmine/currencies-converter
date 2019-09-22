@@ -4,18 +4,18 @@
 namespace oldmine\CurrenciesConverter;
 
 
+use oldmine\CurrenciesConverter\Graph\PathFinder;
+
 class PriceCalculator
 {
-    private $graph;
     private $pathFinder;
 
-    public function __construct($pathFinder)
+    public function __construct(PathFinder $pathFinder)
     {
         $this->pathFinder = $pathFinder;
-        $this->graph = $pathFinder->graph;
     }
 
-    public function getPrice($amount, $from, $to)
+    public function getPrice(float $amount, string $from, string $to): float
     {
         $price = $amount;
         $path = $this->pathFinder->getPath($from, $to);
@@ -30,7 +30,7 @@ class PriceCalculator
 
             [$from, $to] = $pathChunk;
 
-            $price *= $this->graph->edge($from, $to)->getValue();
+            $price *= $this->pathFinder->getEdge($from, $to)->getValue();
         }
 
         return $price;

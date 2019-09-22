@@ -3,7 +3,7 @@
  * Dijkstra's shortest path algorithm.
  */
 
-namespace oldmine\CurrenciesConverter;
+namespace oldmine\CurrenciesConverter\Graph;
 
 use GraphDS\Graph\DirectedGraph;
 use GraphDS\Graph\Graph;
@@ -104,7 +104,7 @@ class Dijkstra
             }
 
             foreach ($neighbors as $vertex) {
-                $alt = $this->dist[$minVertex];
+                $alt = $this->dist[$minVertex] + 1;
                 if ($alt < $this->dist[$vertex]) {
                     $this->dist[$vertex] = $alt;
                     $this->prev[$vertex] = $minVertex;

@@ -1,13 +1,13 @@
 <?php
 
-use oldmine\CurrenciesConverter\Api;
-use oldmine\CurrenciesConverter\GraphBuilder;
-use oldmine\CurrenciesConverter\PathFinder;
+use oldmine\CurrenciesConverter\DataSources\BinanceApiDataSource;
+use oldmine\CurrenciesConverter\Graph\GraphBuilder;
+use oldmine\CurrenciesConverter\Graph\PathFinder;
 use oldmine\CurrenciesConverter\PriceCalculator;
 
 require_once 'vendor/autoload.php';
 
-$api = new Api();
+$api = new BinanceApiDataSource();
 $graphBuilder = new GraphBuilder($api);
 $graph = $graphBuilder->build();
 
