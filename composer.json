@@ -1,0 +1,19 @@
+{
+  "name": "oldmine/currencies-converter",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Daniil Zhelninskiy",
+      "email": "webmailexec@gmail.com"
+    }
+  ],
+  "require": {
+    "jaggedsoft/php-binance-api": "^0.5.7",
+    "algb12/graph-ds": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "oldmine\\CurrenciesConverter\\": "src"
+    }
+  }
+}
