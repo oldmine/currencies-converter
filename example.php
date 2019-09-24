@@ -7,8 +7,8 @@ use oldmine\CurrenciesConverter\PriceCalculator;
 
 require_once 'vendor/autoload.php';
 
-$api = new BinanceApiDataSource();
-$graphBuilder = new GraphBuilder($api);
+$dataSource = new BinanceApiDataSource();
+$graphBuilder = new GraphBuilder($dataSource);
 $graph = $graphBuilder->build();
 
 $pathFinder = new PathFinder($graph);

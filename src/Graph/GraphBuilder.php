@@ -10,19 +10,19 @@ use oldmine\CurrenciesConverter\DataSources\IDataSource;
 
 class GraphBuilder
 {
-    private $api;
+    private $dataSource;
     private $graph;
 
-    public function __construct(IDataSource $api)
+    public function __construct(IDataSource $dataSource)
     {
-        $this->api = $api;
+        $this->dataSource = $dataSource;
         $this->graph = new DirectedGraph();
     }
 
     public function build(): Graph
     {
-        $tickers = $this->api->getTickers();
-        $prices = $this->api->getPrices();
+        $tickers = $this->dataSource->getTickers();
+        $prices = $this->dataSource->getPrices();
 
         foreach ($tickers as $ticker) {
             $this->graph->addVertex($ticker->from);
