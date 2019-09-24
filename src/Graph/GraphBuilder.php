@@ -25,10 +25,14 @@ class GraphBuilder
         $prices = $this->api->getPrices();
 
         foreach ($tickers as $ticker) {
-            $price = $prices[$ticker->name];
-
             $this->graph->addVertex($ticker->from);
             $this->graph->addVertex($ticker->to);
+
+            if (empty($prices[$ticker->name])) {
+                continue;
+            }
+
+            $price = $prices[$ticker->name];
             $this->graph->addEdge($ticker->from, $ticker->to, $price);
             $this->graph->addEdge($ticker->to, $ticker->from, 1.0 / $price);
         }
