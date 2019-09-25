@@ -10,9 +10,9 @@ class BinanceApiDataSource implements IDataSource
 {
     private $api;
 
-    public function __construct()
+    public function __construct(...$params)
     {
-        $this->api = new \Binance\API();
+        $this->api = new \Binance\API(...$params);
     }
 
     /**
