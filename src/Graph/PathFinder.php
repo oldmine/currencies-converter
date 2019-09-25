@@ -23,7 +23,12 @@ class PathFinder
         $this->pathFinder = new Dijkstra($this->graph);
     }
 
-    public function getPath(string $from, string $to)
+    /**
+     * @param string $from
+     * @param string $to
+     * @return string[]
+     */
+    public function getPath(string $from, string $to): array
     {
         if ($this->pathFinder->start !== $from) {
             $this->pathFinder->run($from);
